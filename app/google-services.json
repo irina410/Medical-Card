@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310934686027",
+    "project_id": "medical-card-ac69c",
+    "storage_bucket": "medical-card-ac69c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310934686027:android:8f9df161b0f581d2fe80ce",
+        "android_client_info": {
+          "package_name": "com.project.medicalcard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310934686027-22uaaejpg28mluf9cr6pve2b0m2f1nf6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa0MedZAjKyfF_I_hp96I2uJRC1kBCtcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310934686027-22uaaejpg28mluf9cr6pve2b0m2f1nf6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
