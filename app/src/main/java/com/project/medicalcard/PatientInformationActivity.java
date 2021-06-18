@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,6 +83,24 @@ public class PatientInformationActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        Button button_redact  = (Button) findViewById(R.id.buttonredact);
+        button_redact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  intent = new Intent(PatientInformationActivity.this, RedactActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonb = (Button) findViewById(R.id.buttonb);
+        buttonb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientInformationActivity.this, DoctorActivity.class);
+                startActivity(intent);
+            }
         });
 
 
