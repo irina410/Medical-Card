@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicalCard">
-        <activity android:name=".InformationActivity"></activity>
+        <activity android:name=".PatientInformationActivity"></activity>
+        <activity android:name=".RedactActivity" />
+        <activity android:name=".InformationActivity" />
         <activity android:name=".AddPActivity" />
         <activity android:name=".DoctorActivity" />
         <activity android:name=".MainActivity">

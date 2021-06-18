@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     String userUID;
     public static final String APP_PREFERENCES = "mysettings";
     SharedPreferences mSettings;
+    Intent intent;
+    Intent intentD;
+    String useremail;
+
 
 
     @Override
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         users = db.getReference("Users");
         root = findViewById(R.id.main);
         auth = FirebaseAuth.getInstance();
-
+        intent = new Intent(MainActivity.this,InformationActivity.class);
         Button button_signin_doctor = (Button) findViewById(R.id.doctor);
 
         button_signin_doctor.setOnClickListener(new View.OnClickListener() {
@@ -54,20 +58,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showSignInWindowDoctor();
             }
+
         });
 
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,InformationActivity.class);
                 startActivity(intent);
             }
         });
 
 
 
-
+//        if(mSettings.getString("docID", "").isEmpty()){
+//            startActivity(intent);
+//        }
     }
 
 
@@ -106,9 +112,11 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 userUID = auth.getUid();
+                                useremail = email.getText().toString();
                                 mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = mSettings.edit();
                                 editor.putString("docID", userUID);
+                                editor.putString("em", useremail);
                                 editor.apply();
 
                                 Intent intent = new Intent(MainActivity.this, DoctorActivity.class);
@@ -118,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Snackbar.make(root, "ошибка" + e.getMessage(), Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(root, "неправильный пароль или элюпочта", Snackbar.LENGTH_LONG).show();
                     }
                 });
 

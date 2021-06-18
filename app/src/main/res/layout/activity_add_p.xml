@@ -8,7 +8,13 @@
     android:orientation="vertical"
     tools:context=".AddPActivity">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -18,27 +24,36 @@
         android:textSize="30dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="имя"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonLastName"
+        android:id="@+id/editTextPersonLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="фамилия"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddressadd"
+        android:id="@+id/editTextPersonFatherName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="отчество"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddressadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="эл.почта"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -46,7 +61,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="номер страхового полюса"
         android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/allerg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="аллергические реакции на какие-либо препараты" />
+
+    <EditText
+        android:id="@+id/diseases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="хронические заболевания" />
+
+    <EditText
+        android:id="@+id/editTextPersonPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="телефон пациента"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="контакт знакомого"
+        android:ems="10"
+        android:inputType="phone" />
+
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="дата рождения"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editTexttypeOfBl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="группа крови"
+        android:inputType="textPostalAddress" />
 
     <Button
         android:id="@+id/button_add"
@@ -62,3 +125,7 @@
         android:layout_marginTop="250dp"
         android:text="" />
 </LinearLayout>
+</ScrollView>
+
+
+    </LinearLayout>
