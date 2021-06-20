@@ -67,7 +67,6 @@ public class RedactActivity extends AppCompatActivity {
         final EditText editTextFatherName = (EditText) findViewById(R.id.editTextTextFatherName);
         final EditText editTextdiseases = (EditText) findViewById(R.id.editTextdiseases);
         final EditText editTextphone = (EditText) findViewById(R.id.editTextPhone);
-        final EditText personalPhone = (EditText) findViewById(R.id.editTextPhone2);
         final EditText diseases = (EditText) findViewById(R.id.diseases);
         final EditText all = (EditText) findViewById(R.id.editTextTextMultiLine);
         final EditText email = (EditText) findViewById(R.id.editTextTextEmailAddress2);
@@ -76,27 +75,28 @@ public class RedactActivity extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        reference =  FirebaseDatabase.getInstance().getReference();
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         doctorUID = mSettings.getString("docID", "");
         ipn = mSettings.getString("selectedItem", "");
 
 
-        databaseReference.child(doctorUID).child("patient").child(ipn).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(doctorUID).child(ipn).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    Patient patient = ds.getValue(Patient.class);
+
+                    Patient patient = dataSnapshot.getValue(Patient.class);
                     editTextLastName.setText(patient.getLastname());
                     editTextName.setText(patient.getName());
                     editTextFatherName.setText(patient.getFathername());
                     editTextdiseases.setText(patient.getDiseases());
-                    personalPhone.setText(patient.getPersonalPhone());
+                   // personalPhone.setText(patient.getPersonalPhone());
                     editTextphone.setText(patient.getPhone());
                     email.setText(patient.getEmail());
 
 
-                }
+
             }
 
             @Override
@@ -110,22 +110,21 @@ public class RedactActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
 
         //Связываемся с нашей кнопкой Button:
-        Button PickImage = (Button) findViewById(R.id.buttonfoto);
+       // Button PickImage = (Button) findViewById(R.id.buttonfoto);
         //Настраиваем для нее обработчик нажатий OnClickListener:
-        PickImage.setOnClickListener(new View.OnClickListener() {
+       // PickImage.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-
-                //Вызываем стандартную галерею для выбора изображения с помощью Intent.ACTION_PICK:
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                //Тип получаемых объектов - image:
-                photoPickerIntent.setType("image/*");
-                //Запускаем переход с ожиданием обратного результата в виде информации об изображении:
-                startActivityForResult(photoPickerIntent, Pick_image);
-            }
-        });
-
+//            @Override
+//            public void onClick(View view) {
+//
+//                //Вызываем стандартную галерею для выбора изображения с помощью Intent.ACTION_PICK:
+//                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+//                //Тип получаемых объектов - image:
+//                photoPickerIntent.setType("image/*");
+//                //Запускаем переход с ожиданием обратного результата в виде информации об изображении:
+//                startActivityForResult(photoPickerIntent, Pick_image);
+//            }
+//        });
 
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -207,27 +206,34 @@ public class RedactActivity extends AppCompatActivity {
 
         Button button_ok = (Button) findViewById(R.id.button_ok);
         button_ok.setOnClickListener(new View.OnClickListener() {
+            Patient patient ;
             @Override
             public void onClick(View v) {
 
-                databaseReference.child(doctorUID).child("patient").child(ipn).addValueEventListener(new ValueEventListener() {
+                databaseReference.child(doctorUID).child(ipn).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            Patient patient = new Patient();
+
+                           patient = dataSnapshot.getValue(Patient.class);
+
                             patient.setName(editTextName.getText().toString());
                             patient.setLastname(editTextLastName.getText().toString());
                             patient.setFathername(editTextFatherName.getText().toString());
                             patient.setDateOfB(data);
                             patient.setTypeOfBl(BloodType);
-                            patient.setAllerg(allerg );
+                            patient.setAllerg(allerg);
                             patient.setDiseases(editTextdiseases.getText().toString());
                             patient.setPhone(editTextphone.getText().toString());
-                            patient.setPersonalPhone(personalPhone.getText().toString());
+//                            patient.setPersonalPhone(personalPhone.getText().toString());
 
 
-                        }
+
+
+
+                        reference.child(doctorUID).child(mSettings.getString("selectedItem","")).setValue(patient);
+
                     }
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

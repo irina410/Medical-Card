@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -60,6 +61,8 @@ public class DoctorActivity extends AppCompatActivity {
     private static final String TAG = "myLogs";
     ListView listView;
     ArrayAdapter<String> adapter;
+    TextView name, lastname, fathername, dateOfB, typeOfBl, allerg, diseases, pNumber, persjnalPhone, phone, email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +73,13 @@ public class DoctorActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         doctorUID = mSettings.getString("docID", "");
-        reference = databaseReference.child(doctorUID).child("patient");
+        reference = databaseReference.child(doctorUID);
         auth = FirebaseAuth.getInstance();
         intent = new Intent(DoctorActivity.this, AddPActivity.class);
         listView = findViewById(R.id.listview);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, patients);
-
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSettings.edit();
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,10 +89,10 @@ public class DoctorActivity extends AppCompatActivity {
 
                     Patient patient = ds.getValue(Patient.class);
 
-                    String ipn = patient.getInsurance_policy_number();
+                    String ipn = patient.getInsurance_policy_number() + "   " +
+                            "" + patient.getLastname() + " " + patient.getName();
 
                     patients.add(ipn);
-                    Log.d(TAG, ipn);
                 }
                 listView.setAdapter(adapter);
 
@@ -96,13 +100,20 @@ public class DoctorActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        String selectedItem = patients.get(position);
+                        TextView textView = (TextView) view;
+                        String[] si = ((String) textView.getText()).split(" ");
+                        String selectedItem = si[0];
 
-                        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = mSettings.edit();
+                        Log.d(TAG, selectedItem);
+                        editor.remove("selectedItem");
                         editor.putString("selectedItem", selectedItem);
+                        editor.apply();
+                        Log.d(TAG, mSettings.getString("selectedItem","") + "  ......сохранение ");
+
                         Intent pInfo = new Intent(DoctorActivity.this, PatientInformationActivity.class);
                         startActivity(pInfo);
+
+
                     }
                 });
 
@@ -128,8 +139,6 @@ public class DoctorActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
 }

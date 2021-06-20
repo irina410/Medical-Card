@@ -18,8 +18,9 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"
             android:layout_margin="20dp"
+            android:text="скорая помощь"
+            app:backgroundTint="#00BCD4"
             tools:layout_editor_absoluteX="160dp"
             tools:layout_editor_absoluteY="222dp" />
 
@@ -27,8 +28,9 @@
             android:id="@+id/doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="врач"
             android:layout_margin="20dp"
+            android:text="врач"
+            app:backgroundTint="#00BCD4"
             tools:layout_editor_absoluteX="142dp"
             tools:layout_editor_absoluteY="298dp" />
 

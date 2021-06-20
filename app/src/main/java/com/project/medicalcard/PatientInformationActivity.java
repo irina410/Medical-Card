@@ -42,7 +42,7 @@ public class PatientInformationActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         doctorUID = mSettings.getString("docID", "");
-        ipn = mSettings.getString("selectedItem", "");
+
 
         name = (TextView) findViewById(R.id.name);
         lastname = (TextView) findViewById(R.id.lastname);
@@ -55,19 +55,22 @@ public class PatientInformationActivity extends AppCompatActivity {
         phone = (TextView) findViewById(R.id.textViewnumber);
         pNumber = (TextView) findViewById(R.id.insurance_policy_number);
         email = (TextView) findViewById(R.id.email);
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSettings.edit();
 
-        databaseReference.child(doctorUID).child("patient").child(ipn).addValueEventListener(new ValueEventListener() {
+
+        databaseReference.child(doctorUID).child(mSettings.getString("selectedItem",""))
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    Patient patient = ds.getValue(Patient.class);
+                    Patient patient = dataSnapshot.getValue(Patient.class);
                     lastname.setText(patient.getLastname());
                     name.setText(patient.getName());
                     fathername.setText(patient.getFathername());
                     dateOfB.setText(patient.getDateOfB());
                     typeOfBl.setText(patient.getTypeOfBl());
-                    allerg.setText("аллергические реакции:  "+ patient.getAllerg() );
+                    allerg.setText("аллергические реакции:  " + patient.getAllerg());
                     diseases.setText(patient.getDiseases());
                     persjnalPhone.setText(patient.getPersonalPhone());
                     phone.setText(patient.getPhone());
@@ -75,7 +78,9 @@ public class PatientInformationActivity extends AppCompatActivity {
                     email.setText(patient.getEmail());
 
 
-                }
+
+
+
             }
 
             @Override
@@ -85,11 +90,11 @@ public class PatientInformationActivity extends AppCompatActivity {
 
         });
 
-        Button button_redact  = (Button) findViewById(R.id.buttonredact);
+        Button button_redact = (Button) findViewById(R.id.buttonredact);
         button_redact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intent = new Intent(PatientInformationActivity.this, RedactActivity.class);
+                Intent intent = new Intent(PatientInformationActivity.this, RedactActivity.class);
                 startActivity(intent);
             }
         });

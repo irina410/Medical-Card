@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-241dp">
+        tools:layout_editor_absoluteY="-16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -119,13 +119,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="72dp"
-                android:background="#009688"
+                android:background="#00BCD4"
                 android:elevation="6dp"
                 android:stateListAnimator="@null"
                 android:text="изменить дату"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:translationZ="4dp"
+                app:backgroundTint="#00BCD4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.104"
                 app:layout_constraintStart_toStartOf="parent"
@@ -182,31 +183,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateButton" />
 
-            <Button
-                android:id="@+id/buttonfoto"
-                android:layout_width="120dp"
-                android:layout_height="38dp"
-                android:background="#009688"
-                android:elevation="6dp"
-                android:stateListAnimator="@null"
-                android:text="выбрать фото"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:translationZ="4dp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextTextFatherName"
-                app:layout_constraintEnd_toStartOf="@+id/editTextTextFatherName"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <ImageView
                 android:id="@+id/foto"
                 android:layout_width="116dp"
                 android:layout_height="107dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginBottom="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonfoto"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.084"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
 
             <TextView
@@ -247,7 +232,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/button_ok"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-                app:layout_constraintVertical_bias="0.478" />
+                app:layout_constraintVertical_bias="0.131" />
 
             <EditText
                 android:id="@+id/editTextTextMultiLine"
@@ -264,29 +249,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/checkBox"
                 app:layout_constraintVertical_bias="0.123" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="личный номер телефона"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
-
-            <EditText
-                android:id="@+id/editTextPhone2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:inputType="phone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/button_ok" />
-
             <Button
                 android:id="@+id/button_ok"
                 android:layout_width="123dp"
@@ -300,7 +262,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.055"
+                app:layout_constraintHorizontal_bias="0.038"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintVertical_bias="1.0" />

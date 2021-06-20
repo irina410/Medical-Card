@@ -64,7 +64,7 @@ public class AddPActivity extends AppCompatActivity {
                 patient.setTypeOfBl(typeOfBl.getText().toString());
                 patient.setPhone(phone.getText().toString());
 
-                reference.child(doctorUID).child("patient").child(ipn.getText().toString()).setValue(patient);
+                reference.child(doctorUID).child(ipn.getText().toString()).setValue(patient);
 
                 startActivity(intent);
 
