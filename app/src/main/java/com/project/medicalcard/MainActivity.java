@@ -1,6 +1,7 @@
 package com.project.medicalcard;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     String useremail;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         users = db.getReference("Users");
         root = findViewById(R.id.main);
         auth = FirebaseAuth.getInstance();
-        intent = new Intent(MainActivity.this,InformationActivity.class);
+        intent = new Intent(MainActivity.this, InformationActivity.class);
         Button button_signin_doctor = (Button) findViewById(R.id.doctor);
 
         button_signin_doctor.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Button button = (Button)findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,11 +70,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        String savedText = mSettings.getString("em", "");
+        if (savedText != "") {
+            Intent intent = new Intent(MainActivity.this, DoctorActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
 
 
-//        if(mSettings.getString("docID", "").isEmpty()){
-//            startActivity(intent);
-//        }
     }
 
 
@@ -109,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 auth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 userUID = auth.getUid();
@@ -118,15 +124,18 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("docID", userUID);
                                 editor.putString("em", useremail);
                                 editor.apply();
+                                editor.commit();
+
 
                                 Intent intent = new Intent(MainActivity.this, DoctorActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 startActivity(intent);
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Snackbar.make(root, "неправильный пароль или элюпочта", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(root, "неправильный пароль или эл. почта", Snackbar.LENGTH_LONG).show();
                     }
                 });
 

@@ -107,12 +107,12 @@ public class DoctorActivity extends AppCompatActivity {
                         Log.d(TAG, selectedItem);
                         editor.remove("selectedItem");
                         editor.putString("selectedItem", selectedItem);
-                        editor.apply();
-                        Log.d(TAG, mSettings.getString("selectedItem","") + "  ......сохранение ");
+
+                        Log.d(TAG, mSettings.getString("selectedItem", "") + "  ......сохранение ");
 
                         Intent pInfo = new Intent(DoctorActivity.this, PatientInformationActivity.class);
                         startActivity(pInfo);
-
+                        editor.commit();
 
                     }
                 });
@@ -137,9 +137,25 @@ public class DoctorActivity extends AppCompatActivity {
             }
         });
 
+        Button button_lout = (Button) findViewById(R.id.button_logout);
+        button_lout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout(v);
+            }
+        });
+
 
     }
 
+    public void logout(View view) {
+        SharedPreferences preferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        preferences.edit().clear().commit();
+        auth.signOut();
+        Intent intent = new Intent(DoctorActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 
 }
 
