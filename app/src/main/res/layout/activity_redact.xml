@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginTop="16dp"
-                android:text="ВАШ ПРОФИЛЬ"
+                android:text="ПРОФИЛЬ"
                 android:textColor="#009688"
                 android:textSize="30dp"
                 android:textStyle="bold"
@@ -167,19 +167,19 @@
                 android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintHorizontal_bias="0.167"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextdiseases"
-                app:layout_constraintVertical_bias="0.235" />
+                app:layout_constraintVertical_bias="0.284" />
 
             <CheckBox
                 android:id="@+id/checkBox"
                 style="@android:style/Widget.Holo.Light.CompoundButton.CheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="200dp"
-                android:layout_marginRight="200dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="172dp"
+                android:layout_marginRight="172dp"
                 android:text="аллергические реакции"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateButton" />
@@ -204,10 +204,10 @@
                 android:text="номер телефона родственника или знакомого:"
                 app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.168"
+                app:layout_constraintHorizontal_bias="0.368"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextdiseases"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/editTextdiseases"
@@ -218,7 +218,7 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintHorizontal_bias="0.15"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -226,21 +226,23 @@
                 android:id="@+id/editTextTextEmailAddress2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="180dp"
-                android:layout_marginRight="180dp"
+                android:layout_marginTop="12dp"
                 android:ems="10"
+                android:hint="эл. почта"
                 android:inputType="textEmailAddress"
-                app:layout_constraintBottom_toTopOf="@+id/button_ok"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.167"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-                app:layout_constraintVertical_bias="0.131" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/editTextTextMultiLine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="176dp"
-                android:layout_marginRight="176dp"
+                android:layout_marginEnd="148dp"
+                android:layout_marginRight="148dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint=" если есть, то какие"
@@ -254,7 +256,6 @@
                 android:id="@+id/button_ok"
                 android:layout_width="123dp"
                 android:layout_height="53dp"
-                android:layout_margin="10dp"
                 android:background="#00BCD4"
                 android:elevation="6dp"
                 android:stateListAnimator="@null"
@@ -263,10 +264,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.069"
+                app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.962" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
