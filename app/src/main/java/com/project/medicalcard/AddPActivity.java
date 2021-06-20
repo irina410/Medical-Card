@@ -17,7 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddPActivity extends AppCompatActivity {
-    EditText name, lastname, fathername, email, ipn, pphone, allerg, diseases, typeOfBl, phone, date;
+    EditText name, lastname, fathername, email, ipn,
+            pphone, allerg, diseases, typeOfBl, phone, date;
     TextView tv;
     Button button_add;
     DatabaseReference reference;

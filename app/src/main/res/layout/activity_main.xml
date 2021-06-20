@@ -20,6 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="скорая помощь"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
             app:backgroundTint="#00BCD4"
             tools:layout_editor_absoluteX="160dp"
             tools:layout_editor_absoluteY="222dp" />
@@ -30,6 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="врач"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
             app:backgroundTint="#00BCD4"
             tools:layout_editor_absoluteX="142dp"
             tools:layout_editor_absoluteY="298dp" />

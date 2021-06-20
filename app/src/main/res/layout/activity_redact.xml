@@ -254,7 +254,7 @@
                 android:layout_width="123dp"
                 android:layout_height="53dp"
                 android:layout_margin="10dp"
-                android:background="#009688"
+                android:background="#00BCD4"
                 android:elevation="6dp"
                 android:stateListAnimator="@null"
                 android:text="готово"
@@ -262,10 +262,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.038"
+                app:layout_constraintHorizontal_bias="0.069"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.962" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
