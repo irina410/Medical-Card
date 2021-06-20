@@ -116,7 +116,7 @@
         android:id="@+id/button_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="добавить"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:backgroundTint="#00BCD4" />
