@@ -178,10 +178,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="172dp"
-                android:layout_marginRight="172dp"
                 android:text="аллергические реакции"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.15"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateButton" />
 
             <ImageView
@@ -238,19 +238,19 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/textall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="148dp"
-                android:layout_marginRight="148dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint=" если есть, то какие"
                 android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextdiseases"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.167"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkBox"
-                app:layout_constraintVertical_bias="0.123" />
+                app:layout_constraintVertical_bias="0.185" />
 
             <Button
                 android:id="@+id/button_ok"

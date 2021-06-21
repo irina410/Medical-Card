@@ -59,36 +59,32 @@ public class PatientInformationActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = mSettings.edit();
 
 
-        databaseReference.child(doctorUID).child(mSettings.getString("selectedItem",""))
+        databaseReference.child(doctorUID).child(mSettings.getString("selectedItem", ""))
                 .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Patient patient = dataSnapshot.getValue(Patient.class);
-                    lastname.setText(patient.getLastname());
-                    name.setText(patient.getName());
-                    fathername.setText(patient.getFathername());
-                    dateOfB.setText(patient.getDateOfB());
-                    typeOfBl.setText(patient.getTypeOfBl());
-                    allerg.setText("аллергические реакции:  " + patient.getAllerg());
-                    diseases.setText(patient.getDiseases());
-                    persjnalPhone.setText(patient.getPersonalPhone());
-                    phone.setText(patient.getPhone());
-                    pNumber.setText(patient.getPolicynumb());
-                    email.setText(patient.getEmail());
+                        Patient patient = dataSnapshot.getValue(Patient.class);
+                        lastname.setText(patient.getLastname());
+                        name.setText(patient.getName());
+                        fathername.setText(patient.getFathername());
+                        dateOfB.setText(patient.getDateOfB());
+                        typeOfBl.setText(patient.getTypeOfBl());
+                        allerg.setText("аллергические реакции:  " + patient.getAllerg());
+                        diseases.setText(patient.getDiseases());
+                        persjnalPhone.setText(patient.getPersonalPhone());
+                        phone.setText(patient.getPhone());
+                        pNumber.setText(patient.getPolicynumb());
+                        email.setText(patient.getEmail());
 
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
 
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
+                });
 
         Button button_redact = (Button) findViewById(R.id.buttonredact);
         button_redact.setOnClickListener(new View.OnClickListener() {

@@ -68,14 +68,15 @@ public class RedactActivity extends AppCompatActivity {
         final EditText editTextdiseases = (EditText) findViewById(R.id.editTextdiseases);
         final EditText editTextphone = (EditText) findViewById(R.id.editTextPhone);
         final EditText diseases = (EditText) findViewById(R.id.diseases);
-        final EditText all = (EditText) findViewById(R.id.editTextTextMultiLine);
+        final EditText all = (EditText) findViewById(R.id.textall);
         final EditText email = (EditText) findViewById(R.id.editTextTextEmailAddress2);
+        final EditText tall = (EditText) findViewById(R.id.textall);
         final CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
         final TextView dateOfB = (TextView) findViewById(R.id.dateOfB);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
-        reference =  FirebaseDatabase.getInstance().getReference();
+        reference = FirebaseDatabase.getInstance().getReference();
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         doctorUID = mSettings.getString("docID", "");
         ipn = mSettings.getString("selectedItem", "");
@@ -86,15 +87,14 @@ public class RedactActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-                    Patient patient = dataSnapshot.getValue(Patient.class);
-                    editTextLastName.setText(patient.getLastname());
-                    editTextName.setText(patient.getName());
-                    editTextFatherName.setText(patient.getFathername());
-                    editTextdiseases.setText(patient.getDiseases());
-                   // personalPhone.setText(patient.getPersonalPhone());
-                    editTextphone.setText(patient.getPhone());
-                    email.setText(patient.getEmail());
-
+                Patient patient = dataSnapshot.getValue(Patient.class);
+                editTextLastName.setText(patient.getLastname());
+                editTextName.setText(patient.getName());
+                editTextFatherName.setText(patient.getFathername());
+                editTextdiseases.setText(patient.getDiseases());
+                // personalPhone.setText(patient.getPersonalPhone());
+                editTextphone.setText(patient.getPhone());
+                email.setText(patient.getEmail());
 
 
             }
@@ -106,25 +106,6 @@ public class RedactActivity extends AppCompatActivity {
 
         });
 
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-
-        //Связываемся с нашей кнопкой Button:
-       // Button PickImage = (Button) findViewById(R.id.buttonfoto);
-        //Настраиваем для нее обработчик нажатий OnClickListener:
-       // PickImage.setOnClickListener(new View.OnClickListener() {
-
-//            @Override
-//            public void onClick(View view) {
-//
-//                //Вызываем стандартную галерею для выбора изображения с помощью Intent.ACTION_PICK:
-//                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-//                //Тип получаемых объектов - image:
-//                photoPickerIntent.setType("image/*");
-//                //Запускаем переход с ожиданием обратного результата в виде информации об изображении:
-//                startActivityForResult(photoPickerIntent, Pick_image);
-//            }
-//        });
 
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -206,7 +187,8 @@ public class RedactActivity extends AppCompatActivity {
 
         Button button_ok = (Button) findViewById(R.id.button_ok);
         button_ok.setOnClickListener(new View.OnClickListener() {
-            Patient patient ;
+            Patient patient;
+
             @Override
             public void onClick(View v) {
 
@@ -214,23 +196,19 @@ public class RedactActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                           patient = dataSnapshot.getValue(Patient.class);
+                        patient = dataSnapshot.getValue(Patient.class);
 
-                            patient.setName(editTextName.getText().toString());
-                            patient.setLastname(editTextLastName.getText().toString());
-                            patient.setFathername(editTextFatherName.getText().toString());
-                            patient.setDateOfB(data);
-                            patient.setTypeOfBl(BloodType);
-                            patient.setAllerg(allerg);
-                            patient.setDiseases(editTextdiseases.getText().toString());
-                            patient.setPhone(editTextphone.getText().toString());
-//                            patient.setPersonalPhone(personalPhone.getText().toString());
-
+                        patient.setName(editTextName.getText().toString());
+                        patient.setLastname(editTextLastName.getText().toString());
+                        patient.setFathername(editTextFatherName.getText().toString());
+                        patient.setDateOfB(data);
+                        patient.setTypeOfBl(BloodType);
+                        patient.setAllerg(allerg);
+                        patient.setDiseases(editTextdiseases.getText().toString());
+                        patient.setPhone(editTextphone.getText().toString());
 
 
-
-
-                        reference.child(doctorUID).child(mSettings.getString("selectedItem","")).setValue(patient);
+                        reference.child(doctorUID).child(mSettings.getString("selectedItem", "")).setValue(patient);
 
                     }
 
@@ -245,15 +223,6 @@ public class RedactActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(RedactActivity.this, DoctorActivity.class);
 
-//                Bitmap bitmap = (Bitmap)intent.getExtras().get("imegeview");
-
-                //             imageView.setImageBitmap(bitmap);
-
-//                String[] myStrings = new String[]{editTextName.getText().toString(), editTextLastName.getText().toString(), editTextFatherName.getText().toString(), BloodType, data, editTextNumberSigned.getText().toString(),
-//                        editTextdiseases.getText().toString(), editTextphone.getText().toString()};
-//
-//                intent.putExtra("strings", myStrings);
-
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("ed_name", editTextName.getText().toString());
@@ -263,7 +232,7 @@ public class RedactActivity extends AppCompatActivity {
                 editor.putString("date", data);
                 editor.putString("diseases", editTextdiseases.getText().toString());
                 editor.putString("phone", editTextphone.getText().toString());
-                editor.putString("allerg", allerg);
+                editor.putString("allerg", allerg );
 
                 //editor.putString("imagePreferance", encodeTobase64(imageView));
 

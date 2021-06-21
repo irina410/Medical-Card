@@ -73,15 +73,5 @@ public class AddPActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-        
-
-
-
-
     }
 }
